@@ -1,8 +1,12 @@
 package command_design_pattern;
 
+import java.util.Stack;
+import java.util.spi.AbstractResourceBundleProvider;
+
 //Command Interface
 interface Command {
 	void execute();
+	void undo();
 }
 
 class Fan {
@@ -35,6 +39,13 @@ class FanTurnOnCommand implements Command {
 		fan.on();
 		
 	}
+
+	@Override
+	public void undo() {
+		fan.off();
+		
+	}
+	
 	
 }
 class LightTurnOffCommand implements Command {
@@ -48,6 +59,12 @@ class LightTurnOffCommand implements Command {
 	@Override
 	public void execute() {
 		light.off();
+		
+	}
+
+	@Override
+	public void undo() {
+		light.on();
 		
 	}
 	
@@ -65,6 +82,12 @@ class FanTurnOffCommand implements Command {
 		fan.off();
 		
 	}
+
+	@Override
+	public void undo() {
+		fan.on();
+		
+	}
 	
 }
 class LightTurnOnCommand implements Command {
@@ -80,19 +103,33 @@ class LightTurnOnCommand implements Command {
 		light.on();
 		
 	}
+
+	@Override
+	public void undo() {
+		light.off();
+		
+	}
 	
 }
 
 //Invoker 
 class RemoteControl {
 	Command command;
+	Stack<Command> st = new Stack<Command>();
 	
 	public void setCommand(Command command) {
 		this.command = command;
+		st.push(command);
 	}
 	
 	public void clickButton() {
 		command.execute();
+	}
+	public void undo() {
+		if(!st.isEmpty()) {
+			Command tempCommand = st.pop();
+			tempCommand.undo();
+		}
 	}
 }
 
@@ -113,6 +150,7 @@ public class Client {
 	   remoteControl.clickButton();
 	   remoteControl.setCommand(new FanTurnOnCommand(fan));
 	   remoteControl.clickButton();
+	   remoteControl.undo();
 }
 
    
