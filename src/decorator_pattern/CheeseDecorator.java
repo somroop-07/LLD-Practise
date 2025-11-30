@@ -9,7 +9,7 @@ public class CheeseDecorator extends PizzaDecorator{
 	
 	public String getDesc() {
 		// TODO Auto-generated method stub
-		return decoratedPizza.getDesc() + "+ Cheese";
+		return decoratedPizza.getDesc() + " + Cheese ";
 	}
 
 	public double getCost() {

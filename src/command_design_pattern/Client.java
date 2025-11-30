@@ -9,6 +9,7 @@ interface Command {
 	void undo();
 }
 
+//Receiver
 class Fan {
 	public void on() {
 		System.out.println("Fan turned on");
@@ -25,7 +26,7 @@ class Light {
 		System.out.println("Light turned off");
 	}
 }
-
+//Concrete Command
 class FanTurnOnCommand implements Command {
 	
 	Fan fan;

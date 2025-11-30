@@ -1,8 +1,5 @@
 package strategy_pattern;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.security.Provider.Service;
-
 interface PaymentStrategy {
 	void pay();
 }

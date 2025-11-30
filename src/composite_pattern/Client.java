@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 interface FileDirectory {
-	void ls();
+	public void ls();
 }
 
 class File implements FileDirectory {

@@ -8,7 +8,7 @@ public class ChickenDecorator extends PizzaDecorator {
 	}
 	public String getDesc() {
 		// TODO Auto-generated method stub
-		return decoratedPizza.getDesc() + "+ Chicken";
+		return decoratedPizza.getDesc() + " + Chicken ";
 	}
 
 	public double getCost() {
