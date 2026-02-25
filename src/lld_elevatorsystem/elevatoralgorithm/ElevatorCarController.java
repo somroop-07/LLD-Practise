@@ -63,7 +63,7 @@ public class ElevatorCarController implements ElevatorController {
         	  }
     		  elevatorCar.setDirection(Direction.DOWN);
     		  while(!pendingJobs.isEmpty()) {
-    			  downRequests.add(pendingJobs.poll());
+    			  upRequests.add(pendingJobs.poll());
     		  }
     	  }
     	  else {
@@ -72,7 +72,7 @@ public class ElevatorCarController implements ElevatorController {
         	  }
     		  elevatorCar.setDirection(Direction.UP);
     		  while(!pendingJobs.isEmpty()) {
-    			  upRequests.add(pendingJobs.poll());
+    			  downRequests.add(pendingJobs.poll());
     		  }
     	  }
 

@@ -150,7 +150,23 @@ class SortMapByValue {
 		//Sort by value
 		Map<String, Integer> map2 = map.entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toMap(Map.Entry ::getKey, Map.Entry ::getValue,
 				(e1,  e2) -> e1, LinkedHashMap::new));
-		System.out.println(map2);
+						
+		Map<String, Integer> mp3 = map.entrySet().stream().sorted((e1,e2) -> e1.getValue().compareTo(e2.getValue())).collect(Collectors.toMap(
+				item -> item.getKey(),
+				item -> item.getValue(),
+				(e1, e2) -> e1,
+				LinkedHashMap :: new
+				
+				));
+		System.out.println(mp3);
+	}
+}
+class MapDepartmentWise {
+	public static void solve() {
+	    List<Employee2> employeeList = Arrays.asList(new Employee2("Rahul", "IT", 1000000), new Employee2("Rohan", "HR", 500000),
+	    		new Employee2("Sdfdaf", "IT", 120000),new Employee2("Ssfdaf", "HR", 760000),new Employee2("Ddfdf", "MKT", 200000));
+	    Map<String, List<Employee2>> mp = employeeList.stream().collect(Collectors.groupingBy(e -> e.getDepartment()));
+	    System.out.println(mp);
 	}
 }
 class FindAvgSalary {
@@ -193,6 +209,8 @@ public class StreamAPI {
 	    //SortMapByValue.solve();
 	  
 	 //9. Find avg salary department wise
-	      FindAvgSalary.solve();
-}
+	     // FindAvgSalary.solve();
+	 //10.create a map  where key is dept and values are employees wiht same dept.
+	    MapDepartmentWise.solve();
+}        
 }
