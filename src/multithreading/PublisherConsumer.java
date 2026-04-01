@@ -12,7 +12,7 @@ class PublisherConsumerService {
 				System.out.println("Queue full; Cannot add");
 				wait();
 			}
-			queue.add(x);
+			queue.offer(x);
 			System.out.println("Added value: " + x);
 			notifyAll();
 		}
@@ -23,7 +23,7 @@ class PublisherConsumerService {
 				System.out.println("Queue empty; Nothing to consume");
 				wait();
 			}
-			int x = queue.remove();
+			int x = queue.poll();
 			System.out.println("Consumed value: " + x);
 			notifyAll();
 		}

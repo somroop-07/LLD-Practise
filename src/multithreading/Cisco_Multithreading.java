@@ -16,8 +16,9 @@ class NumberPrinter {
 			if(number <= n) {
 			System.out.println(Thread.currentThread().getName() + " -> " + number);
 			number++;
-			notifyAll();
 			}
+			notifyAll();
+			
 		}
 	}
 	public synchronized void printEven() throws InterruptedException {
@@ -28,8 +29,9 @@ class NumberPrinter {
 			if(number <= n) {
 			System.out.println(Thread.currentThread().getName() + " -> " + number);
 			number++;
-			notifyAll();
 			}
+			notifyAll();
+			
 		}
 	}
 }
