@@ -4,6 +4,50 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+class Result {
+	static class Pair implements Comparable<Pair>{
+		int val;
+        int idx;
+        Pair(int val, int idx) {
+        	this.val = val;
+        	this.idx = idx;
+        }
+		@Override
+		public int compareTo(Pair o) {
+			return Integer.compare(val,o.val);
+		}
+	}
+	public static long totalResponseTime(List<Integer> responseTimes) {
+		int n = responseTimes.size();
+		PriorityQueue<Pair> pq = new PriorityQueue<>();
+		int[] visited = new int[n];
+		for(int i = 0; i < n; i++) {
+			pq.offer(new Pair(responseTimes.get(i), i));
+		}
+		
+		long ans = 0;
+		
+		while(!pq.isEmpty()) {
+			Pair id = pq.poll();
+			if(visited[id.idx] == 1) {
+				continue;
+			}
+			visited[id.idx] = 1;
+			if(id.idx - 1 >= 0)
+			visited[id.idx - 1] = 1;
+			if(id.idx + 1 < n)
+			visited[id.idx + 1] = 1;
+			ans += id.val;
+		}
+		return ans;
+		
+		
+	}
+}
+
 
 class Solve3 {
 	public static List<String> classifytexts(List<String>texts, List<String>spamWords) {
@@ -58,6 +102,15 @@ class Solve4 {
 }
 public class exmple1 {
      public static void main(String[] args) {
-		
+		int n;
+		Scanner scanner = new Scanner(System.in);
+		n = scanner.nextInt();
+		List<Integer> response = new ArrayList<>();
+		for(int i = 0; i < n; i++) {
+			int temp = scanner.nextInt();
+			response.add(temp);
+			
+		}
+		//System.out.println(Solve5.totalResponseTime(response));
 	}
 }
