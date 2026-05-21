@@ -27,7 +27,7 @@ public class Driver {
 		ANDStrategy strategy3 = new ANDStrategy(List.of(strategy1,strategy2));
 		
 		FileFilterSystem fileFilterSystem = new FileFilterSystem();
-		List<FileSystemComponent> filteredList = fileFilterSystem.filter(root, strategy2);
+		List<FileSystemComponent> filteredList = fileFilterSystem.filter(root, strategy1);
 		
 		for(FileSystemComponent fileSystemComponent : filteredList) {
 			System.out.println(fileSystemComponent.getName());
