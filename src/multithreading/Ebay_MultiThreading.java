@@ -1,6 +1,5 @@
 package multithreading;
 
-import java.util.jar.Attributes.Name;
 
 class Task extends Thread {
 	

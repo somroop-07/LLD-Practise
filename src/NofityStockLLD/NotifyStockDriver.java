@@ -6,6 +6,26 @@ import NofityStockLLD.enitities.Product;
 import NofityStockLLD.enitities.User;
 import NofityStockLLD.enums.ProductType;
 
+//Notify Button LLD
+//
+//Functional Requirements:
+//1) User can click the Notify Me button for any product which has gone out of stock
+//2) Whenever the product comes back in stock, notify the customer (email/ sms)
+//
+//Non-Functional Requirements:
+//1) Modular and extensible design
+//2) SOLID principles 
+//
+//Design Patterns:
+//1) Observable Pattern
+//
+//Core Entitites:
+//1) User (userId, userName, email, phone)
+//2) Product (productId, productName, productCategory, stock)
+//3) ProductObservable (Map<ProductId, List<Users>, Set<Observers>)
+//4) NotificationObservers 
+//5) NotifyService
+
 
 public class NotifyStockDriver {
    

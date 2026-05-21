@@ -1,5 +1,7 @@
 package LLD_Problems.AirportScheduler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class AirportScheduler {
@@ -17,13 +19,38 @@ public class AirportScheduler {
     }
 
     public synchronized void processNext(long currentTime) {
-        if (runway.isAvailable(currentTime) && !queue.isEmpty()) {
+    	List<Flight> notReadyFlights = new ArrayList<>();
+    	Flight selectedFlight = null;
+    	
+    	if(!runway.isAvailable(currentTime)) {
+    		return;
+    	}
+        while (!queue.isEmpty()) {
             Flight next = queue.poll();
-            runway.assignFlight(next, currentTime);
-            System.out.println("Assigned flight: " + next.getFlightId());
+            if(next.getScheduledTime() > currentTime) {
+            	notReadyFlights.add(next);
+            }
+            else {
+            	selectedFlight = next;
+            	break;
+            }
         }
+        
+        for(Flight f: notReadyFlights) {
+        	queue.offer(f);
+        }
+        
+            if(selectedFlight != null) {
+            	 runway.assignFlight(selectedFlight, currentTime);
+            	 System.out.println("Assigned flight: " + selectedFlight.getFlightId());
+            }
+            else {
+            	System.out.println("No flights ready yet");
+            }
+           
+            
     }
-
+    
     public Flight peekNext() {
         return queue.peek();
     }
