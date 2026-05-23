@@ -5,7 +5,7 @@ import alexadevice_lld.entitites.AudioDevice;
 import alexadevice_lld.entitites.ScreenDevice;
 import alexadevice_lld.features.BatteryCapability;
 
-/** Consider there are differnt types of alexa devices available.
+/** Consider there are different types of alexa devices available.
 One with audio, one with screen, one with audio and screen. 
 These devices may have a battery or may not.
 Battery devices will have battery percentage. 
