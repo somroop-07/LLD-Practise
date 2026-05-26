@@ -23,7 +23,6 @@ public class MeetingRoomManager {
 	public void addMeetingRoom(MeetingRoom room) {
 		meetingRoomsList.add(room);
 	}
-    //Other CRUD 
 	
 	public MeetingRoom bookMeetingRoom(int capacity, LocalDate date, TimeSlot slot) throws Exception {
 		
