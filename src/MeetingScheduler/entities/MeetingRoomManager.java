@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
 
+
+
 public class MeetingRoomManager {
     TreeSet<MeetingRoom> meetingRoomsList = new TreeSet<>((a, b) -> {
     	int cmp = Integer.compare(a.getCapacity(), b.getCapacity());
@@ -32,7 +34,7 @@ public class MeetingRoomManager {
 				return room;
 			}
 		}	
-		throw new Exception("No Meeting Rooms available ");
+		throw new RuntimeException("No Meeting Rooms available ");
 	}
     
 }

@@ -7,7 +7,7 @@ public class TokenRateLimiter extends RateLimiter {
 
 	@Override
 	public RateLimitingStrategy getRateLimitingStrategy() {
-		return new TokenBucketStrategy(5, 2);
+		return new TokenBucketStrategy(5, 3);
 	}
 
 }

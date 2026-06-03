@@ -12,11 +12,7 @@ public abstract class RateLimiter {
       
       public boolean rateLimit(Request request) {
     	  String clientId = request.getClientId();
-    	  if(rateLimitMap.containsKey(clientId)) {
-    		  return rateLimitMap.get(clientId).allowRequest();
-    	  }
-    	  RateLimitingStrategy strategy = this.getRateLimitingStrategy();
-    	  rateLimitMap.put(clientId, strategy);
+    	  RateLimitingStrategy strategy = rateLimitMap.computeIfAbsent(clientId, k -> getRateLimitingStrategy());
     	  return strategy.allowRequest();
       }
       
