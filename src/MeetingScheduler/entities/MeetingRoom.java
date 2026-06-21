@@ -68,11 +68,11 @@ public class MeetingRoom {
 		this.meetingRoomCalendar = meetingRoomCalendar;
 	}
 	
-	public boolean book(LocalDate date, TimeSlot timeSlot, int capacity) {
+	public boolean book(LocalDate date, TimeSlot timeSlot, int capacity, RecurrenceRule recurrenceRule) {
 			if(this.capacity < capacity) {
 				return false;
 			}
-			if(meetingRoomCalendar.addMeeting(date, timeSlot)) {
+			if(meetingRoomCalendar.addMeeting(date, timeSlot, recurrenceRule)) {
 				return true;
 			}
 		 return false;

@@ -26,11 +26,11 @@ public class MeetingRoomManager {
 		meetingRoomsList.add(room);
 	}
 	
-	public MeetingRoom bookMeetingRoom(int capacity, LocalDate date, TimeSlot slot) throws Exception {
+	public MeetingRoom bookMeetingRoom(int capacity, LocalDate date, TimeSlot slot, RecurrenceRule recurrenceRule) throws Exception {
 		
 		
 		for(MeetingRoom room : meetingRoomsList) {
-			if(room.book(date, slot, capacity)) {
+			if(room.book(date, slot, capacity, recurrenceRule)) {
 				return room;
 			}
 		}	

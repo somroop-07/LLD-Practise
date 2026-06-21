@@ -16,10 +16,10 @@ public class MeetingScheduler {
 	this.observerList = new ArrayList<>();
 }
 
-   public Meeting createMeeting(LocalDate date, TimeSlot slot, int capacity, List<User> users) {
-	   try {
-		MeetingRoom room = meetingRoomManager.bookMeetingRoom(capacity, date, slot);
-		Meeting meeting = new Meeting(date, slot, users, capacity, room);
+   public Meeting createMeeting(LocalDate date, TimeSlot slot, int capacity, List<User> users, RecurrenceRule recurrenceRule) {
+	   try {   
+		MeetingRoom room = meetingRoomManager.bookMeetingRoom(capacity, date, slot, recurrenceRule);
+		Meeting meeting = new Meeting(date, slot, users, capacity, room, recurrenceRule);
 		updateObservers(meeting);
 		return meeting;
 	   } catch (Exception e) {

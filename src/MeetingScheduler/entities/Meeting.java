@@ -5,20 +5,15 @@ import java.util.List;
 import java.util.UUID;
 
 public class Meeting {
-	 public MeetingRoom getRoom() {
-		return room;
-	}
-	public void setRoom(MeetingRoom room) {
-		this.room = room;
-	}
 	 String id;
      LocalDate date;
      TimeSlot timeSlot;
      List<User> users;
      int capacity;
      MeetingRoom room;
+     RecurrenceRule recurrenceRule;
      
-	 public Meeting(LocalDate date, TimeSlot timeSlot, List<User> users, int capacity, MeetingRoom room) {
+	 public Meeting(LocalDate date, TimeSlot timeSlot, List<User> users, int capacity, MeetingRoom room, RecurrenceRule recurrenceRule) {
 		super();
 		this.id = UUID.randomUUID().toString();
 		this.date = date;
@@ -26,7 +21,14 @@ public class Meeting {
 		this.users = users;
 		this.capacity = capacity;
 		this.room = room;
+		this.recurrenceRule = recurrenceRule;
 	 }
+	 public MeetingRoom getRoom() {
+		return room;
+	}
+	public void setRoom(MeetingRoom room) {
+		this.room = room;
+	}
 	 public String getId() {
 		 return id;
 	 }

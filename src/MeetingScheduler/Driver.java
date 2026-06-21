@@ -1,8 +1,11 @@
 package MeetingScheduler;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import MeetingScheduler.entities.Meeting;
 import MeetingScheduler.entities.MeetingRoom;
@@ -10,6 +13,8 @@ import MeetingScheduler.entities.MeetingRoomManager;
 import MeetingScheduler.entities.MeetingRoomObservers;
 import MeetingScheduler.entities.MeetingScheduler;
 import MeetingScheduler.entities.NotificationService;
+import MeetingScheduler.entities.RecurrenceRule;
+import MeetingScheduler.entities.RecurrenceType;
 import MeetingScheduler.entities.TimeSlot;
 import MeetingScheduler.entities.User;
 //Requirements:
@@ -43,8 +48,11 @@ public class Driver {
     	User user4 = new User("ggd.gmail.com");
     	User user5 = new User("xyz.gmail.com");
     	
-    	Meeting meeting1 = scheduler.createMeeting(LocalDate.now(), new TimeSlot(LocalTime.of(15, 0), LocalTime.of(16, 0)), 5, Arrays.asList(user1, user2,user3, user4, user5));
-    	Meeting meeting2 = scheduler.createMeeting(LocalDate.now(), new TimeSlot(LocalTime.of(15, 0), LocalTime.of(16, 0)), 3, Arrays.asList(user1, user2,user3));
+    	Meeting meeting1 = scheduler.createMeeting(LocalDate.now(), new TimeSlot(LocalTime.of(15, 0), 
+    			LocalTime.of(16, 0)), 5, Arrays.asList(user1, user2,user3, user4, user5),
+    			new RecurrenceRule(RecurrenceType.NONE,null,null));
+    	Meeting meeting2 = scheduler.createMeeting(LocalDate.now(), new TimeSlot(LocalTime.of(15, 0), LocalTime.of(16, 0)), 3, Arrays.asList(user1, user2,user3),
+    			new RecurrenceRule(RecurrenceType.WEEKLY,LocalDate.now().plusMonths(5), new HashSet<>(Set.of(DayOfWeek.TUESDAY, DayOfWeek.FRIDAY))));
 	}
 	
   
