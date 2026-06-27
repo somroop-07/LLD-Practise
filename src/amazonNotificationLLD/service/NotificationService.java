@@ -1,8 +1,5 @@
 package amazonNotificationLLD.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import amazonNotificationLLD.entitites.Notification;
 import amazonNotificationLLD.entitites.StrategyFactory;
 import amazonNotificationLLD.entitites.User;
@@ -26,7 +23,7 @@ public class NotificationService {
 		
 		//Factory only sends strategy against channel. No business logic handling.
 		//No more need of PriorityStrategy
-		//If future more combinations, just change Notification Router class.
+		//If future more combinations, no need to create more composite strategies. Just change Notification Router class.
 
 
 	}
